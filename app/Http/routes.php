@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/api/cid', 'CidController@getTodosCid');
+Route::get('/api/cid/{cid}', 'CidController@getCidById');
+Route::get('/api/cid/procurar/{termo}', 'CidController@procuraCid');
