@@ -15,13 +15,14 @@ class CriarTabelaAtestados extends Migration
         Schema::create('atestados', function(Blueprint $table){
             $table->increments('id');
             $table->integer('funcionario_id');
-            $table->string('identificacao');
             $table->dateTime('data_atestado');
+            //ATENÇÃO: A identificação tem que ser colocada no front-end
             $table->string('nome_medico');
-            $table->string('CRM');
+            $table->string('crm');
             $table->string('cid_id');
             $table->dateTime('data_inicial');
             $table->dateTime('data_final');
+            $table->text('observacoes')->nullable();
             $table->timestamps();
 
 

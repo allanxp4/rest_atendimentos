@@ -15,7 +15,7 @@ class CriarTablaFuncionarios extends Migration
         Schema::create('funcionarios', function(Blueprint $table){
             $table->increments('id');
             $table->string('nome');
-            $table->string('identificacao');
+            $table->string('identificacao')->nullable();
             $table->integer('empresa_id');
             $table->timestamps();
 
