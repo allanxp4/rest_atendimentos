@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Atendimento;
 use App\Funcionario;
+use Illuminate\Database\Query\Builder;
 
 class AtendimentoController extends Controller
 {
@@ -17,9 +18,6 @@ class AtendimentoController extends Controller
 
     public function buscaAtendimentoPorId($id){
         $atendimento = Atendimento::find($id);
-        $funcionario = Funcionario::find($atendimento->funcionario_id);
-
-        $atendimento->funcionario = $funcionario;
         return $atendimento;
 
     }
@@ -30,31 +28,20 @@ class AtendimentoController extends Controller
     }
 
     public function novoAtendimento(Request $request){
-        $atendimento = new Atendimento($request->all());
-        $funcionario = new Funcionario($request->input('funcionario'));
-        $funcionario->save();
 
-        $atendimento->funcionario_id = $funcionario->id;
-        $atendimento->save();
+        $funcionario = Funcionario::find($request->input('funcionario_id'));
+        $atendimento = new Atendimento($request->all());
+        $funcionario->atendimento()->save($atendimento);
 
         return response('', 204);
+
+
     }
 
     public function atualizaAtendimento(Request $request){
-        $funcionario = Funcionario::find($request->funcionario_id);
-        $atendimento = Atendimento::find($request->id);
 
-        $funcionario->nome = $request->input('funcionario.nome');
-        $funcionario->identificacao = $request->input('funcionario.identificacao');
-        $funcionario->save();
-
-        $atendimento->data = $request->input('data');
-        $atendimento->pressao = $request->input('pressao');
-        $atendimento->pulso = $request->input('pulso');
-        $atendimento->temperatura = $request->input('temperatura');
-        $atendimento->queixa = $request->input('queixa');
-        $atendimento->conduta = $request->input('conduta');
-        $atendimento->save();
+        $atendimento = Atendimento::find($request->input('id'));
+        $atendimento->fill($request->all())->save();
 
         return response('', 204);
 
