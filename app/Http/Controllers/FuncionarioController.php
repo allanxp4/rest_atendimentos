@@ -30,23 +30,12 @@ class FuncionarioController extends Controller
         $funcionario = Funcionario::find($request->input('id'));
         $funcionario->nome = $request->input('nome');
         $funcionario->identificacao = $request->input('identificacao');
-        $funcionario->save;
+        $funcionario->save();
 
     }
 
     public function excluiFuncionario($id){
         Funcionario::destroy($id);
     }
-    //FIM DO CRUD DE FUNCIONÁRIOS
-
-    //Início das funções do atendimento
-    public function novoAtendimento(Request $request){
-        $funcionario = Funcionario::find($request->input['funcionario_id']);
-        $atendimento = new Atendimento($request->all());
-
-        $funcionario->atendimento()->save($atendimento);
-
-        return response('', 204);
-
-    }
+    //FIM DO CRUD DE FUNCIONÁRIOSS
 }

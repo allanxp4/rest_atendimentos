@@ -14,6 +14,6 @@ class Atestado extends Model
     function funcionario(){
 
 
-        return $this->belongsTo('funcionario');
+        return $this->belongsTo('\App\Funcionario');
     }
 }
