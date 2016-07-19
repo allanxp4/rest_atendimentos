@@ -12,6 +12,11 @@ use Illuminate\Database\Query\Builder;
 
 class AtendimentoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
+
     public function getTodosAtendimentos(){
         return Atendimento::all();
     }

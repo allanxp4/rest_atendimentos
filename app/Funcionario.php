@@ -8,7 +8,7 @@ use Illuminate\Database\Query\Builder;
 class Funcionario extends Model
 {
    
-    protected $fillable = ['nome', 'identificacao'];
+    protected $fillable = ['nome', 'identificacao', 'empresa_id'];
 
     public function empresa(){
         return $this->belongsTo('App\Empresa');

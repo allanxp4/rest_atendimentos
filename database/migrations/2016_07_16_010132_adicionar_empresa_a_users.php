@@ -13,7 +13,7 @@ class AdicionarEmpresaAUsers extends Migration
     public function up()
     {
         Schema::table('users', function($table){
-            $table->string('empresa_id');
+            $table->integer('empresa_id');
 
         });
     }

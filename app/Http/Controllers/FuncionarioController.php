@@ -22,20 +22,25 @@ class FuncionarioController extends Controller
         return Funcionario::find($id);
     }
 
+    public function buscaTodosFuncionarios(){
+        return Funcionario::all();
+    }
+
     public function buscaFuncionarioPorNome($nome){
         //TODO: implementar a busca de funcionários por nome
     }
 
-    public function editaFuncionario(Request $request){
+    public function atualizaFuncionario(Request $request){
         $funcionario = Funcionario::find($request->input('id'));
-        $funcionario->nome = $request->input('nome');
-        $funcionario->identificacao = $request->input('identificacao');
-        $funcionario->save();
+        $funcionario->fill($request->all())->save();
 
+        return response('', 204);
     }
 
     public function excluiFuncionario($id){
         Funcionario::destroy($id);
+
+        return response('', 204);
     }
     //FIM DO CRUD DE FUNCIONÁRIOSS
 }
