@@ -29,10 +29,11 @@ Route::get('/cid/procurar/{termo}', 'CidController@procuraCid');
 //Rotas do atendimento
 Route::get('/atendimento', 'AtendimentoController@getTodosAtendimentos');
 Route::get('/atendimento/{id}', 'AtendimentoController@buscaAtendimentoPorId');
-//Route::get('/atendimento/data/{data}', 'AtendimentoController@buscaAtendimentoPorData');
+Route::get('/atendimento/data/{data}', 'AtendimentoController@buscaAtendimentoPorData');
 Route::post('/atendimento', 'AtendimentoController@novoAtendimento');
 Route::put('/atendimento', 'AtendimentoController@atualizaAtendimento');
-
+Route::delete('/atendimento/{id}', 'AtendimentoController@excluiAtendimento');
+Route::get('/test', 'AtendimentoController@getAuthenticatedUser');
 //Rotas do atestado
 Route::get('/atestado', 'AtestadoController@todosAtestados');
 Route::get('/atestado/{id}', 'AtestadoController@buscaAtestadoPorId');

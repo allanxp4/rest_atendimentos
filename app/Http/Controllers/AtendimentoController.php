@@ -9,16 +9,21 @@ use App\Http\Requests;
 use App\Atendimento;
 use App\Funcionario;
 use Illuminate\Database\Query\Builder;
+use Auth;
 
 class AtendimentoController extends Controller
 {
-    public function __construct()
+    /*TODO: Ativar antes de colocar em público
+    public function __construct(Request $request)
     {
         $this->middleware('jwt.auth');
-    }
+    }*/
+
 
     public function getTodosAtendimentos(){
-        return Atendimento::all();
+        $atendimentos = Atendimento::with('funcionario')->get();
+        return $atendimentos;
+
     }
 
     public function buscaAtendimentoPorId($id){
@@ -26,7 +31,7 @@ class AtendimentoController extends Controller
         return $atendimento;
 
     }
-    
+
     public function buscaAtendimentoPorData($data){
         return Atendimento::where('data', 'like', "%$data%");
 
@@ -52,6 +57,12 @@ class AtendimentoController extends Controller
 
 
     }
+    
+    public function excluiAtendimento($id){
+        Atendimento::destroy($id);
+        return Response('', 204);
+    }
+
 }
 
 
