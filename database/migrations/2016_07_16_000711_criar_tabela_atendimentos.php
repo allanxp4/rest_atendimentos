@@ -15,7 +15,8 @@ class CriarTabelaAtendimentos extends Migration
         Schema::create('atendimentos', function(Blueprint $table){
             $table->increments('id');
             $table->integer('funcionario_id');
-            $table->dateTime('data_hora');
+            $table->date('date');
+            $table->time('time');
             //ATENÇÃO: A identificação tem que ser colocada no front-end
             $table->string('pressao');
             $table->string('pulso');

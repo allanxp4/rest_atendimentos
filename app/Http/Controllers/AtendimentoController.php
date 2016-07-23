@@ -21,9 +21,8 @@ class AtendimentoController extends Controller
 
 
     public function getTodosAtendimentos(){
-        $atendimentos = Atendimento::with('funcionario')->get();
-        return $atendimentos;
-
+        return Atendimento::with('funcionario')->get();
+        
     }
 
     public function buscaAtendimentoPorId($id){

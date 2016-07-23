@@ -11,7 +11,7 @@ use App\Funcionario;
 class AtestadoController extends Controller
 {
     public function todosAtestados(){
-        return Atestado::all();
+        return Atestado::with('funcionario')->get();
     }
     
     public function novoAtestado(Request $request){

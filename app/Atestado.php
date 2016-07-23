@@ -8,7 +8,7 @@ class Atestado extends Model
 {
     //TODO: checar se os IDs realmente precisam ser fiilable
     protected $fillable = ['data_atestado', 'nome_medico', 'crm', 'cid_id',
-        'data_inicial', 'data_final', 'observacoes'];
+        'data_inicial', 'data_final', 'hora_inicial', 'hora_final', 'observacoes'];
 
     
     function funcionario(){
