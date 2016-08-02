@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");//REMOVER ESSA GAMBIS HORRIVEL ANTES DO DEPLOY
 
 /**
  * Laravel - A PHP Framework For Web Artisans

@@ -10,6 +10,14 @@ use App\Funcionario;
 
 class AtestadoController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        //$this->middleware('cors');
+        //$this->middleware('jwt.auth');
+        //TODO: Ativar antes de colocar em público
+
+    }
+
     public function todosAtestados(){
         return Atestado::with('funcionario')->get();
     }

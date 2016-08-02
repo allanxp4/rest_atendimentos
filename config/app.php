@@ -163,6 +163,8 @@ return [
         //JWTauth
         'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
 
+        //CORS
+
 
     ],
 

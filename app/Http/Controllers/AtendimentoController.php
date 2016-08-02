@@ -13,11 +13,13 @@ use Auth;
 
 class AtendimentoController extends Controller
 {
-    /*TODO: Ativar antes de colocar em público
     public function __construct(Request $request)
     {
-        $this->middleware('jwt.auth');
-    }*/
+        //$this->middleware('cors');
+        //$this->middleware('jwt.auth');
+        //TODO: Ativar antes de colocar em público
+
+    }
 
 
     public function getTodosAtendimentos(){
@@ -37,6 +39,7 @@ class AtendimentoController extends Controller
     }
 
     public function novoAtendimento(Request $request){
+        echo($request);
 
         $funcionario = Funcionario::find($request->input('funcionario_id'));
         $atendimento = new Atendimento($request->all());

@@ -12,6 +12,14 @@ use App\Atendimento;
 //classe para acesso aos funcionarios e seus relacionamentos.
 class FuncionarioController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        //$this->middleware('cors');
+        //$this->middleware('jwt.auth');
+        //TODO: Ativar antes de colocar em público
+
+    }
+
     //funções CRUD dos funcionarios.
     public function novoFuncionario(Request $request){
         Funcionario::create($request->all());
